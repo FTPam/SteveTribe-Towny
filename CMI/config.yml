@@ -12,9 +12,9 @@ Economy:
   # 如果没有自动开启请手动开启
   Enabled: true
   # 玩家需要手动点击聊天栏消息来确认金钱支付吗
-  Confirmation: false
+  Confirmation: true
   # 是否记录玩家之间的所有交易
-  LogEnabled: false
+  LogEnabled: true
   log:
     Unknown: true
     Transfer: true
@@ -41,7 +41,7 @@ Economy:
   BalTop:
     # 玩家金钱排行榜上不会显示下列玩家的金钱数量，适合把OP添加到这里
     Exclude:
-    - Notch
+    - TPam
     # 开启此项，金钱排行榜上的数字会以字母缩写表示，比如 12.5M 可指代 12501234
     DisplayWithShorts: false
     # 玩家金钱排行榜上不会显示名称以下列内容开头的玩家
@@ -57,19 +57,19 @@ Economy:
     IncludeFakes: false
   Global:
     # 玩家初始金钱
-    StartingAmount: 100.0
+    StartingAmount: 0.0
     # 玩家拥有最小金钱，如果需要的话可以设置为负数
     MinimalAmount: 0.0
     # 玩家拥有的最多金钱，设置为-1可取消限制
     MaximumAmount: 1.0E8
     # 玩家单次进行金钱交易的最小金额变动
     # 此机制可以防止一些熊孩子多次发送超小额金钱来刷屏
-    MinimalPay: 0.5
+    MinimalPay: 0.1
     # 是否允许玩家使用分数来表示交易金额
     # 若关闭此项则玩家必须使用普通数字来进行交易
     Fractions: true
     # 金钱符号
-    CurrencySymbol: €
+    CurrencySymbol: ' SC '
     # 金钱显示格式
     MoneyFormat: '###,##0.00'
     # 长数字会变成字母缩写，比如 12305122 会缩写成 12.3m
@@ -100,7 +100,7 @@ Optimizations:
   MonochromeConsole: false
   # 若玩家刚进服，是否给予玩家一个无敌状态，数字为持续的秒数
   # 设置为 0 则禁用此功能
-  ImmortalityOnJoin: 3
+  ImmortalityOnJoin: 0
   # 如果服务器还没做好，请开启“正在制作”模式
   Maintenance: false
   # 若开启了“正在制作”模式，将自动踢出全部玩家（拥有权限 cmi.command.maintenance.bypass 的玩家除外）
@@ -162,7 +162,7 @@ Optimizations:
   SimilarCommandPrevention: false
   # 设置为 true, 指令帮助里以/cmi开头的指令都会以简写展示，比如 /cmi back 会显示为 /back
   # 请注意：该功能只和展示指令有关，至于简写的指令能不能用，必须另行设置！
-  RemoveLabel: false
+  RemoveLabel: true
   # 设置为 true，所有玩家把鼠标悬停在错误提示上可查看自己缺失的权限
   # 设置为 false，只有拥有 cmi.permisiononerror 权限的玩家可以这么做
   PermisionOnError: true
@@ -191,11 +191,11 @@ Optimizations:
     # 接受 tpa 或者 tpahere 请求的限时，超时则请求失效
     TpaTime: 60
     # 玩家开始 tpa 或者 tpahere 之前要等待多少秒？
-    TpaWarmup: 3
+    TpaWarmup: 0
     # 玩家等待传送中可以移动？
     TpaMove: false
     # 如果玩家刚刚拒绝了一个传送请求/tpdeny，在多少秒内会屏蔽来自那个玩家的传送请求
-    TpaBlock: 120
+    TpaBlock: 10
     # 传送到“不安全区域”的考虑时间
     TpBypass: 15
     # 设置为true，在发送 tpa 或者 tpahere 请求时会显示接受或者拒绝按钮
@@ -257,9 +257,9 @@ Optimizations:
   CMIPlayTimeTracking: true
   # 以下玩家将被排除在玩家游戏时间排行榜之外
   PlaytimeTopExclude:
-  - Some
-  - Names
-  - Here
+  - So
+  - Na
+  - He
   ItemName:
     # 黑名单物品的设置详参 ItemRenaming.list 部分
 
@@ -322,7 +322,7 @@ Optimizations:
       # 这个设置项是针对“有权限开别人背包的非OP”玩家的，OP无视此限制
       #（汉化者注：无聊的设置项...）
       BlackList:
-      - Zrips  
+      - TPam  
     Clear:
       # 设置为 true, 为了避免误操作 /cmi clear 需要二次确认才能执行
       Confirmation: true
@@ -352,7 +352,7 @@ Sleeping:
   Speedup:
     # 设置为true，玩家睡觉时可加速夜晚进度
     # 进入睡眠的玩家越多，夜晚加速越快
-    Enabled: true
+    Enabled: false
     # 此机制生效的世界
     # 请务必注意：生效的世界必须是NORMAL类型的世界，也就是说地狱和末地不能设置，同时全服只能设置唯一一个世界
     # 设置为 [] 则所有合适的NORMAL世界都会被包含在内
@@ -410,7 +410,7 @@ ExploitPatcher:
   PreventExpPortals: true
   # 启用此项，将阻止玩家在床上时执行指令，此机制和某些bug触发有关
   # 默认是关闭的，但建议开启
-  NoCommandsInBed: false
+  NoCommandsInBed: true
   # 由于“超多页面的成书”与许多bug有关，建议开启此项
   # 设置为 true 玩家将不能再创作超多页面的成书
   # 玩家可创建成书页面与权限 cmi.book.pages.<最大书页数> 有关，默认可创建20页
@@ -443,16 +443,15 @@ BossBar:
   # 启用或禁用 bossbar 血条显示boss的血量，仅适用于 1.9+ 
   HpBarEnabled: true
   # 不显示bossbar的实体名称
-  HpBarBlackList:
-  - Ender_dragon
+  HpBarBlackList: []
 Ban:
   # 设置为true，当玩家被封禁，玩家将收到来自 CMI 的提示语，而非MC原版的提示语
-  OverrideLoginMessage: false
+  OverrideLoginMessage: true
 ReSpawn:
   # 玩家重生后有多少秒时间是无敌的
   # 这个设置可以防止玩家刚重生就又被砍死
   # 设置为 0 可关闭此设置
-  Immortality: 3
+  Immortality: 0
   # 如果你想让第三方插件处理玩家重生，请设置此项为false并重载插件
   Enabled: true
   Global:
@@ -462,30 +461,30 @@ ReSpawn:
     # warp![warName] 可设置为可传送的地标, 使用此法传送至地标无视权限限制
     PriorityOrder:
     - anchor
-    - spawn
-    - bedLocation
     - homeLocation
+    - bedLocation
+    - spawn
     - worldSpawn
   # 给特定世界设置重生点
   # 如果你想使用第三方插件（如Multiverse-core）处理重生，请把world: 及下面的内容全都删掉
   Specific:
     world:
+    - homeLocation
+    - bedLocation
     - anchor
     - spawn
-    - bedLocation
-    - homeLocation
     - worldSpawn
     world_nether:
     - anchor
+    - homeLocation
     - bedLocation
     - spawn
-    - homeLocation
     - worldSpawn
     world_the_end:
     - anchor
+    - homeLocation
     - bedLocation
     - spawn
-    - homeLocation
     - worldSpawn
 Afk:
   # 启用AFK离开系统
@@ -587,7 +586,7 @@ Holograms:
     placeUp: true  
 Votifier:
   # 启用投票计数系统
-  CountVotes: true
+  CountVotes: false
   # 同一个 IP 地址的玩家24小时内最多可投的票数
   # 设置为 0 则无限制
   MaxVotesInADay: 0
@@ -677,7 +676,7 @@ GroundClean:
   - itemType
 Chat:
   # 按照本插件的格式显示聊天内容
-  ModifyChatFormat: false
+  ModifyChatFormat: true
   # 设置为 true, 公共聊天和私聊消息当把鼠标放在上面时将会显示悬停消息（PlaceholderAPI变量支持）可点击快速回复
   ClickHoverMessages: false
   DiscordSRV:
@@ -737,7 +736,7 @@ Chat:
   # “呼喊”的消息必须以英文感叹号 ! 开头，且玩家必须拥有权限 cmi.shout 
   # 上面的设置项 GeneralRange 必须是开启状态
   # 设置为 0 代表本世界均可以听见呼喊, 设置为 -1 禁用限制
-  ShoutRange: 200
+  ShoutRange: 10
   # 设置“呼喊”消息一次需要花费的金钱
   ShoutCost: 0
   # 如果玩家此时正在聊天室里聊天，他需要在聊天内容前加一个 ! 来将聊天暂时切换至公共聊天
@@ -797,7 +796,7 @@ Chat:
     # cmi.colors.nickname.[颜色英文]
     NickName: true
   # 设置为true，被你无视的玩家的公共聊天将不会显示
-  IgnorePublicMessage: false
+  IgnorePublicMessage: true
   Tag:
     # 启用艾特系统，若有聊天内容中提到 @某玩家 ，该玩家将会收到消息
     Enabled: true
@@ -836,7 +835,7 @@ Command:
     # 玩家只有进服后多少秒后才能进入指令偷窥模式
     # 这个设置为了防止恶意玩家强登OP号在被踢出之前就偷窥到玩家的指令
     # 请务必设置的比登录插件允许输入密码的限时要长
-    DelayForTrigger: 60
+    DelayForTrigger: 180
     # 下列指令不会被指令偷窥监控到（出于隐私保护）
     BlackListed:
     - register
@@ -857,7 +856,7 @@ PlayerMail:
   # 玩家邮件会被保存多少天
   ExpiresIn: 30
   # 群发给所有玩家的邮件将发给前 x 天上过线的玩家
-  mailAllDays: 7
+  mailAllDays: 90
 DisplayName:
   # 如果你安装了能改变玩家名的第三方插件, 设置为 false
   Change: true
@@ -927,7 +926,7 @@ Spawners:
   Interact:
     # 设置为 true, 玩家必须拥有相应权限才能用刷怪蛋修改刷怪笼
     # 比如玩家必须拥有权限 cmi.egginteract.pig 才能使用猪刷怪蛋修改刷怪笼
-    EggRequiresPermission: false
+    EggRequiresPermission: true
   # 设置为 true, 当刷怪笼被TNT炸毁时有几率掉落它自身
   TnTExplosionDrop:
     use: false
@@ -988,7 +987,7 @@ Mirror:
   MaxRange: 50
 NetherPortal:
   # 完全禁止地狱门创建，有此权限者依然可以创建： cmi.netherportalbypass
-  PreventCreation: false
+  PreventCreation: true
   # 可创建地狱门的最大高度. 原版是 23
   # 这个设置可以用于限制主世界地狱门猪人刷怪塔的建造
   MaxHeight: 23
@@ -1037,7 +1036,7 @@ DamageControl:
 - lowermagmacubedamage:hot_floor:0.5
 Totem:
   # 设置为 true，玩家死亡时背包里的不死图腾会自动生效，哪怕没有被拿在手上
-  RemoveFromInventory: false
+  RemoveFromInventory: true
   Cooldown:
     # 设置为 true 玩家每过 X 秒才能使用一次不死图腾
     Use: false
@@ -1066,11 +1065,11 @@ Elytra:
     SpeedLimitStop: false
     # 显示飞行速度
     SpeedDecimals: true
-    # 每次使用推进器，加速多少
-    GeneralMultyplier: 0.1
+    # 每次使用推进器，加速多少0.1
+    GeneralMultyplier: 0.0
     # 每次使用超级推进器，加速多少
-    # 使用普通推进器时按住shift即可切换至超级推进器
-    SuperMultyplier: 0.3
+    # 使用普通推进器时按住shift即可切换至超级推进器0.3
+    SuperMultyplier: 0.0
     # 消耗物品，而不消耗经验
     UseItems: false
     # 每次推进要消耗的物品ID
@@ -1104,7 +1103,7 @@ Elytra:
 # 飞行能量系统    
 FlightCharge:
   # 默认情况下bossbar会显示剩余的飞行能量. 若设置为false，bossbar只在人为更改飞行能量时会显示，正常的飞行消耗不再显示
-  ShowBossBar: true
+  ShowBossBar: false
   # 设置为 true, 每次玩家获得新的飞行能量或者下线重登后，其飞行模式都会自动开启
   # 设置为 false, 玩家必须使用 /cmi flyc 指令来手动开启飞行
   EnabledByDefault: true
@@ -1180,14 +1179,14 @@ Messages:
   # 第一次进服显示消息    
   # 可用变量: [playername], [totalUsers], [onlinePlayers]
   FirstJoinMessage:
-    Use: false
+    Use: true
 Books:
   # 使用/getbook指令获得成书时，默认作者是？
-  DefaultAuthor: PCD
+  DefaultAuthor: Steve
   # 设置为true则成书创建时会添加创建时间
-  AddDate: false
+  AddDate: true
 # 玩家进服后哪一种自定义内容customText会被显示. 想禁用此功能可将名字设置为不存在的自定义内容customText
-Motd: welcomeMessage
+Motd: &6欢迎新玩家 $e[playername]
 # 警告系统，Points代表此警告级别的点数，LifeTime代表这个点数维持的时间秒
 # 当警告点数达到一定级别时，触发指令惩罚玩家
 Warnings:
@@ -1311,9 +1310,9 @@ WorldLimits:
     - None
 # 显示玩家之前用过的MOJANG的正版ID，仅适用于正版服
 CheckForNameChange:
-  OnLogin: true
+  OnLogin: false
   AmountToShow: 3
-  OnInfoShow: true
+  OnInfoShow: false
   # 当检测到玩家换了新名字，是否执行指令
   PerformCommandsOnNewName: false
   # 执行的指令
@@ -1434,7 +1433,7 @@ Combat:
   safeZoneDamage: false
   # 设置为 true, 被攻击者也会进入战斗模式，哪怕他没有还手
   # 设置为 false 只有攻击者会进入战斗模式
-  IncludeVictim: true
+  IncludeVictim: false
   Player:
     # 设置为true, 进入战斗状态的玩家会终止fly飞行状态
     # 也就是说如果玩家此时正在飞行中，他会掉下来
@@ -1559,7 +1558,7 @@ WarmUps:
 Jail:
   # 每过多少毫秒检查玩家是否逃出监狱范围
   # 设置的大一点可以减少服务器负担
-  CheckInterval: 500
+  CheckInterval: 1200
   # 如果把玩家关进监狱时没有指定时间，默认的时间是？
   DefaultTime: 300
   # 当玩家在监狱里时聊天可被多少半径的玩家听到
@@ -1568,10 +1567,10 @@ Jail:
   ChatRange: 20
   # 设置为 true 监狱服刑时间包括离线时间
   # 设置为 false 只有在线时间算进服刑时间
-  CountWhileOffline: false
+  CountWhileOffline: true
   # 设置为 true 监狱服刑时间包括离开（AFK）时间
   # 设置为 false, 则不包括
-  NoAfk: false
+  NoAfk: true
   # 当玩家正在监狱服刑，是否让其避免一切伤害
   PreventDamage: true
   # 当玩家正在监狱服刑，是否让其避免饥饿
@@ -1603,10 +1602,10 @@ purge:
   # 当服务器开启时清空所有本插件数据，别开！
   CleanOnStart: false
   # 当玩家不在线多少天后，其玩家数据会被清除
-  OfflineDays: 90
+  OfflineDays: 3650
   PlayerData:
     # 开启玩家世界数据清理？
-    Enabled: true
+    Enabled: false
     # 会从哪个文件夹清理数据？
     SourceFolder: world\playerdata
     # 如果设置为false，被清理的数据将会被移至备份文件夹
@@ -1616,7 +1615,7 @@ purge:
     DestinationFolder: world\playerdata_backup
   PlayerStats:
     # 开启玩家状态数据清理
-    Enabled: true
+    Enabled: false
     # 会从哪个文件夹清理数据？
     SourceFolder: world\stats
     # 如果设置为false，被清理的数据将会被移至备份文件夹
@@ -1626,7 +1625,7 @@ purge:
     DestinationFolder: world\stats_backup
   PlayerAdvancements:
     # 开启玩家进度数据清理
-    Enabled: true
+    Enabled: false
     # 会从哪个文件夹清理数据？
     SourceFolder: world\Advancements
     # 如果设置为false，被清理的数据将会被移至备份文件夹
