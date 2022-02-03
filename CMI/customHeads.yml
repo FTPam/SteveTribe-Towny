@@ -7,8 +7,8 @@
 LootMobBonus:
   Enabled: true
   Lvl1: 5.0
-  Lvl2: 15.0
-  Lvl3: 30.0
+  Lvl2: 9.0
+  Lvl3: 20.0
 # 使用默认的头颅的Lore（如果头颅没有自定义lore的话）
 useDefaultHeadLore: true
 # 头颅默认的lore
@@ -20,7 +20,7 @@ PlayerHead:
   # 可以使用击杀者和被击杀者的变量
   # 当然其它全局变量也可以显示，但是会以被击杀者作为各种变量的“接收者”（source）
   Lore:
-  - '&7Killed by &6[playerName]'
+  - '&7被玩家 &6[playerName] &7击杀'
 # 每种生物的自定义头颅
 # 格式是 [掉落几率]:[头颅材质]
 # 强烈建议将至少一种头颅的掉落几率设置为 100% 因为如果不这样有可能造成玩家本该获得头颅结果没有获得的情况
