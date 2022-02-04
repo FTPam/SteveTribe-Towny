@@ -71,15 +71,15 @@ world-settings:
     simulation-distance: default
     thunder-chance: 100000
     merge-radius:
-      item: 2.5
-      exp: 3.0
-    item-despawn-rate: 6000
+      item: 4.0
+      exp: 6.0
+    item-despawn-rate: 4000
     zombie-aggressive-towards-villager: true
     wither-spawn-sound-radius: 0
-    mob-spawn-range: 8
+    mob-spawn-range: 6
     hanging-tick-frequency: 100
     nerf-spawner-mobs: false
-    arrow-despawn-rate: 1200
+    arrow-despawn-rate: 300
     trident-despawn-rate: 1200
     dragon-death-sound-radius: 0
     growth:
@@ -104,12 +104,12 @@ world-settings:
       cavevines-modifier: 100
       glowberry-modifier: 100
     entity-activation-range:
-      animals: 32
-      monsters: 32
+      animals: 15
+      monsters: 22
       raiders: 48
-      misc: 16
+      misc: 2
       water: 16
-      villagers: 32
+      villagers: 20
       flying-monsters: 32
       wake-up-inactive:
         animals-max-per-tick: 4
@@ -157,8 +157,8 @@ world-settings:
       misc: 32
       other: 64
     max-tick-time:
-      tile: 50
-      entity: 50
+      tile: 1000
+      entity: 1000
     hunger:
       jump-walk-exhaustion: 0.05
       jump-sprint-exhaustion: 0.2
