@@ -220,10 +220,10 @@ town:
   default_neutral: 'false'
  
   # Default town board
-  default_board: /town set board [msg]
+  default_board: 通过命令/town set board [msg]来设置城镇公告
  
   # Setting this to true will set a town's tag automatically using the first four characters of the town's name.
-  set_tag_automatically: 'false'
+  set_tag_automatically: 'true'
  
   # Default tax settings for new towns.
   default_taxes:
@@ -307,7 +307,7 @@ town:
  
   # The maximum townblocks available to a town is (numResidents * ratio).
   # Setting this value to 0 will instead use the level based jump values determined in the town level config.
-  town_block_ratio: '6'
+  town_block_ratio: '8'
  
   # The maximimum amount of townblocks a town can have, if town_block_ratio is 0 the max size will be decided by the town_levels.
   # Set to 0 to have no size limit.
@@ -329,7 +329,7 @@ town:
 nation:
  
   # If set to true, any newly made nation will have their spawn set to public.
-  default_public: 'false'
+  default_public: 'true'
  
   # If set to true, any newly made nation will have open status and any town may join without an invite.
   default_open: 'false'
@@ -357,11 +357,11 @@ nation:
  
 new_world_settings:
   # Do new worlds have Towny enabled by default?
-  using_towny: 'true'
+  using_towny: 'false'
  
   pvp:
     # Do new worlds have pvp enabled by default?
-    world_pvp: 'false'
+    world_pvp: 'true'
  
     # Do new worlds have pvp forced on by default?
     # This setting overrides a towns' setting.
@@ -539,7 +539,7 @@ global_town_settings:
   damage_cancels_spawn_warmup: 'true'
  
   # Number of seconds that must pass before a player can use /t spawn or /res spawn.
-  spawn_cooldown_time: '60'
+  spawn_cooldown_time: '5'
  
   # Decides whether confirmations should appear if you spawn to an area with an associated cost.
   spawn_warnings: 'true'
@@ -619,7 +619,7 @@ global_town_settings:
   # When set above zero this is the largest number of residents a town can support before they join/create a nation.
   # Do not set this value to an amount less than the required_number_residents_join_nation below.
   # Do not set this value to an amount less than the required_number_residents_create_nation below.
-  maximum_number_residents_without_nation: '0'
+  maximum_number_residents_without_nation: '30'
  
   # The required number of residents in a town to join a nation
   # If the number is 0, towns will not require a certain amount of residents to join a nation
@@ -853,11 +853,11 @@ plugin:
     web_map:
  
       # If enabled, players will be prompted to open a url when clicking on coordinates in towny status screens.
-      enabled: 'false'
+      enabled: 'true'
  
       # The url that players will be prompted to open when clicking on a coordinate in a status screen.
       # Valid placeholders are {world}, {x}, and {y}, for the world name, x, and y coordinates respectively.
-      url: https://example.com/map/?worldname={world}&mapname=flat&zoom=5&x={x}&y=64&z={z}
+      url: https://sttmap.mcfuntime.com/?worldname={world}&mapname=flat&zoom=5&x={x}&y=64&z={z}
  
   day_timer:
  
@@ -868,7 +868,7 @@ plugin:
     # The time each "day", when taxes will be collected.
     # Only used when less than day_interval. Default is 12h (midday).
     # If day_interval is set to something like 20m, the new_day_time is not used, day_interval will be used instead.
-    new_day_time: 12h
+    new_day_time: 13h
  
     # Whether towns with no claimed townblocks should be deleted when the new day is run.
     delete_0_plot_towns: 'false'
@@ -1145,7 +1145,7 @@ notification:
  
   # If set to true MC's Title and Subtitle feature will be used when crossing into a town.
   # Could be seen as intrusive/distracting, so false by default.
-  using_titles: 'false'
+  using_titles: 'true'
  
   # Requires the above using_titles to be set to true.
   # Title and Subtitle shown when entering a town or the wilderness. By default 1st line is blank, the 2nd line shows {townname} or {wilderness}.
@@ -1159,13 +1159,13 @@ notification:
   titles:
  
     # Entering Town Upper Title Line
-    town_title: ''
+    town_title: '&b{townname}'
  
     # Entering Town Lower Subtitle line.
-    town_subtitle: '&b{townname}'
+    town_subtitle: '&b{town_residents_online}&6人在线'
  
     # Entering Wilderness Upper Title Line
-    wilderness_title: ''
+    wilderness_title: '&6荒郊野外'
  
     # Entering Wilderness Lower Subtitle line.
     wilderness_subtitle: '&2{wilderness}'
@@ -1392,14 +1392,14 @@ economy:
     price_town_spawn_travel: '0.0'
  
     # Cost to use '/town spawn [town]' to another town in your nation.
-    price_town_nation_spawn_travel: '5.0'
+    price_town_nation_spawn_travel: '2.0'
  
     # Cost to use '/town spawn [town]' to another town in a nation that is allied with your nation.
-    price_town_ally_spawn_travel: '10.0'
+    price_town_ally_spawn_travel: '2.0'
  
     # Maximum cost to use /town spawn [town] that mayors can set using /t set spawncost.
     # This is paid to the town you goto.
-    price_town_public_spawn_travel: '10.0'
+    price_town_public_spawn_travel: '2.0'
  
     # When set to true, any cost paid by a player to use any variant of '/town spawn' will be paid to the town bank.
     # When false the amount will be paid to the server account whose name is set in the closed economy setting below..
@@ -1407,38 +1407,38 @@ economy:
  
   # The daily upkeep to remain neutral, paid by the Nation bank. If unable to pay, neutral/peaceful status is lost.
   # Neutrality will exclude you from a war event, as well as deterring enemies.
-  price_nation_neutrality: '100.0'
+  price_nation_neutrality: '0.0'
  
   # The daily upkeep to remain neutral, paid by the Town bank. If unable to pay, neutral/peaceful status is lost.
-  price_town_neutrality: '25.0'
+  price_town_neutrality: '0.0'
  
   new_expand:
  
     # How much it costs to start a nation.
-    price_new_nation: '1000.0'
+    price_new_nation: '5000.0'
  
     # How much it costs to start a town.
-    price_new_town: '250.0'
+    price_new_town: '1000.0'
  
     # The base cost a town has to pay to merge with another town. The town that initiates the merge pays the cost.
     price_town_merge: '0'
  
     # The percentage that a town has to pay per plot to merge with another town. The town that initiates the merge pays the cost.
     # This is based on the price_claim_townblock.
-    price_town_merge_per_plot_percentage: '50'
+    price_town_merge_per_plot_percentage: '20'
  
     # How much it costs to reclaim a ruined town.
     # This is only applicable if the town-ruins & town-reclaim features are enabled.
-    price_reclaim_ruined_town: '500.0'
+    price_reclaim_ruined_town: '1500.0'
  
     # How much it costs to make an outpost. An outpost isn't limited to being on the edge of town.
-    price_outpost: '500.0'
+    price_outpost: '2000.0'
  
     # The price for a town to expand one townblock.
-    price_claim_townblock: '25.0'
+    price_claim_townblock: '60.0'
  
     # How much every additionally claimed townblock increases in cost. Set to 1 to deactivate this. 1.3 means +30% to every bonus claim block cost.
-    price_claim_townblock_increase: '1.0'
+    price_claim_townblock_increase: '0.0'
  
     # The maximum price for an additional townblock. No matter how many blocks a town has the price will not be above this. Set to -1 to deactivate this.
     max_price_claim_townblock: '-1.0'
@@ -1446,13 +1446,13 @@ economy:
     # The amount refunded to a town when they unclaim a townblock.
     # Warning: do not set this higher than the cost to claim a townblock.
     # It is advised that you do not set this to the same price as claiming either, otherwise towns will get around using outposts to claim far away.
-    price_claim_townblock_refund: '0.0'
+    price_claim_townblock_refund: '50.0'
  
     # How much it costs a player to buy extra blocks.
-    price_purchased_bonus_townblock: '25.0'
+    price_purchased_bonus_townblock: '100.0'
  
     # How much every extra bonus block costs more. Set to 1 to deactivate this. 1.2 means +20% to every bonus claim block cost.
-    price_purchased_bonus_townblock_increase: '1.0'
+    price_purchased_bonus_townblock_increase: '0.0'
  
     # The maximum price that bonus townblocks can cost to purchase. Set to -1.0 to deactivate this maxium.
     price_purchased_bonus_townblock_max_price: '-1.0'
@@ -1461,7 +1461,7 @@ economy:
  
     # Either fixed or percentage.
     # For percentage 1.0 would be 100%. 0.01 would be 1%.
-    price_death_type: percentage
+    price_death_type: fixed
  
     # A maximum amount paid out by a resident from their personal holdings for percentage deaths.
     # Set to 0 to have no cap.
@@ -1470,11 +1470,11 @@ economy:
     # If True, only charge death prices for pvp kills. Not monsters/environmental deaths.
     price_death_pvp_only: 'false'
  
-    price_death: '0.1'
+    price_death: '0'
  
-    price_death_town: '0.06'
+    price_death_town: '0'
  
-    price_death_nation: '0.03'
+    price_death_nation: '0'
  
   banks:
  
@@ -1506,7 +1506,7 @@ economy:
  
     # When set to true, players can only use their town withdraw/deposit commands while inside of their own town.
     # Likewise, nation banks can only be withdrawn/deposited to while in the capital city.
-    disallow_bank_actions_outside_town: 'false'
+    disallow_bank_actions_outside_town: 'true'
  
   closed_economy:
  
@@ -1544,12 +1544,12 @@ economy:
  
     # The server's daily charge on each nation. If a nation fails to pay this upkeep
     # all of it's member town are kicked and the Nation is removed.
-    price_nation_upkeep: '100.0'
+    price_nation_upkeep: '2.5'
  
     # Uses the total number of plots which a nation has across all of its towns to determine upkeep
     # instead of nation_pertown_upkeep and instead of nation level (number of residents.)
     # Calculated by (price_nation_upkeep X number of plots owned by the nation's towns.)
-    nation_perplot_upkeep: 'false'
+    nation_perplot_upkeep: 'true'
  
     # Uses total number of towns in the nation to determine upkeep instead of nation level (Number of Residents)
     # calculated by (number of towns in nation X price_nation_upkeep).
@@ -1560,11 +1560,11 @@ economy:
  
     # The server's daily charge on each town. If a town fails to pay this upkeep
     # all of it's residents are kicked and the town is removed.
-    price_town_upkeep: '10.0'
+    price_town_upkeep: '3.0'
  
     # Uses total amount of owned plots to determine upkeep instead of the town level (Number of residents)
     # calculated by (number of claimed plots X price_town_upkeep).
-    town_plotbased_upkeep: 'false'
+    town_plotbased_upkeep: 'true'
  
     # If set to true, the plot-based-upkeep system will be modified by the Town Levels' upkeep modifiers.
     town_plotbased_upkeep_affected_by_town_level_modifier: 'false'
@@ -1576,7 +1576,7 @@ economy:
     town_plotbased_upkeep_maximum_amount: '0.0'
  
     # The server's daily charge on a town which has claimed more townblocks than it is allowed.
-    price_town_overclaimed_upkeep_penalty: '0.0'
+    price_town_overclaimed_upkeep_penalty: '5.0'
  
     # Uses total number of plots that the town is overclaimed by, to determine the price_town_overclaimed_upkeep_penalty cost.
     # If set to true the penalty is calculated (# of plots overclaimed X price_town_overclaimed_upkeep_penalty).
@@ -1598,7 +1598,7 @@ economy:
     # The debt has a ceiling equal to the estimated value of the town (from new town and claims costs)
     # The debt can be repaid using /t deposit x.
     # Once all debt is repaid, the town immediately returns to a normal state.
-    enabled: 'false'
+    enabled: 'true'
  
     # When using bankruptcy is enabled a Town a debtcap.
     # The debt cap is calculated by adding the following:
