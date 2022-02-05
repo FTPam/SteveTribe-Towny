@@ -65,7 +65,7 @@ levels:
     mayorPostfix: ''
     townBlockLimit: 32
     upkeepModifier: 1.0
-    townOutpostLimit: 1
+    townOutpostLimit: 0
   - numResidents: 6
     debtCapModifier: 1.0
     namePostfix: ' (村镇)'
@@ -1145,7 +1145,7 @@ notification:
  
   # If set to true MC's Title and Subtitle feature will be used when crossing into a town.
   # Could be seen as intrusive/distracting, so false by default.
-  using_titles: 'true'
+  using_titles: 'false'
  
   # Requires the above using_titles to be set to true.
   # Title and Subtitle shown when entering a town or the wilderness. By default 1st line is blank, the 2nd line shows {townname} or {wilderness}.
