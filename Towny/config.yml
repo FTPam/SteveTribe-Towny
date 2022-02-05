@@ -857,7 +857,7 @@ plugin:
  
       # The url that players will be prompted to open when clicking on a coordinate in a status screen.
       # Valid placeholders are {world}, {x}, and {y}, for the world name, x, and y coordinates respectively.
-      url: https://sttmap.mcfuntime.com/?worldname={world}&mapname=flat&zoom=5&x={x}&y=64&z={z}
+      url: http://sttmap.mcfuntime.com/?worldname={world}&mapname=flat&zoom=5&x={x}&y=64&z={z}
  
   day_timer:
  
